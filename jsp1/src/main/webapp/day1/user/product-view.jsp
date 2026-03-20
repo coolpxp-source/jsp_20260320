@@ -16,8 +16,9 @@
 		if(rs.next()){
 			out.println("<div> 제품 이름 : " + rs.getString("PRODUCT_NAME") + "<div>");
 			out.println("<div> 브랜드 : " + rs.getString("BRAND") + "<div>");
+			out.println("<div>종류 : " + rs.getString("CATEGORY") + "<div>");
 			out.println("<div> 가격 : " + rs.getString("PRICE") + "<div>");
-			out.println("<div> 출시일 : " + rs.getString("RELEASE_DATE") + "<div>");
+			out.println("<div>설명 : " + rs.getString("DESCRIPTION") + "<div>");
 		}else{
 			out.print("해당 제품이 없습니다.");
 		}

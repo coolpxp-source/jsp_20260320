@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="12_sign-up-result.jsp" name="join" method="get">
+	<form action="sign-up-result.jsp" name="join" method="get">
 		<div>
 			<label>아이디 : <input name="userId"></label> <!-- form태그 내에서 테이터를 넘기기 위해서는 name 속성이 필수 -->
 		</div>
@@ -21,15 +22,9 @@
 			<label>이름 : <input name="name"></label>
 		</div>
 		<div>
-			<label>나이 : <input name="age"></label>
-		</div>
-		<div>
-			취미 : 
-			<label><input type="checkbox" name="hobby" value="코딩">코딩</label>
-			<label><input type="checkbox" name="hobby" value="독서">독서</label>
-			<label><input type="checkbox" name="hobby" value="운동">운동</label>
-			<label><input type="checkbox" name="hobby" value="게임">게임</label>
-			<label><input type="checkbox" name="hobby" value="영화감상">영화감상</label>
+			성별 : 
+			<label><input type="radio" value="M" name="gender" checked>남자</label>
+			<label><input type="radio" value="F" name="gender">여자</label>
 		</div>
 		<div>
 			<input type="button" value="회원가입" onclick="fnJoin()">  <!-- input type="button" 으로 하면 바로 넘어가지 않는다. -->
@@ -59,11 +54,6 @@
 		if(join.name.value.length == 0){
 			alert("이름은 비워둘 수 없습니다.");
 			join.name.focus();
-			return;
-		}
-		if(join.age.value.length == 0){
-			alert("나이는 비워둘 수 없습니다.");
-			join.age.focus();
 			return;
 		}
 		// 위 조건을 모두 만족했을 때, 최종 submit(action 페이지 호출)

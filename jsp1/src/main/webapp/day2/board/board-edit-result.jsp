@@ -21,17 +21,17 @@
 				+ "UDATETIME = SYSDATE "
 				+ "WHERE BOARDNO = " + boardNo;
 		int result = stmt.executeUpdate(sql);
+		
 	%>
-	
 </body>
 </html>
 <script>
 	let result = <%= result %>
 	if(result > 0){
-		alert("수정 됨");
-	}else{
-		alert("실패 함");
+		alert("수정되었습니다!");
+	} else {
+		alert("수정에 실패했습니다!");
 	}
 	location.href = "board-list.jsp";
-
 </script>
+

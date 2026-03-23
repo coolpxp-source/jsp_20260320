@@ -36,8 +36,8 @@
 		if(rs.next()){
 		String kind = rs.getString("KIND");
 		%>
-		<form action="board-edit.jsp" name="form">
-			<input name="boardNo" value = <%= boardNo %> hidden>
+		<form action="board-edit-result.jsp" name="form">
+			<input name="boardNo" value = "<%= boardNo %>" type="hidden">
 			<table>
 				<tr>
 					<th>종류</th>
@@ -49,7 +49,7 @@
 				</tr>
 				<tr>
 					<th>제목</th>
-					<td><input type="text" name="title" value=<%= rs.getString("TITLE") %>></td>
+					<td><input type="text" name="title" value="<%= rs.getString("TITLE") %>"></td>
 
 				</tr>
 				<tr>

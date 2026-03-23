@@ -9,28 +9,36 @@
 <body>
 	<%@ include file="../../db.jsp" %>
 	<%
+		request.setCharacterEncoding("UTF-8");
+		
 		String stuNo = request.getParameter("stuNo");
 		String stuName = request.getParameter("stuName");
 		String stuDept = request.getParameter("stuDept");
-		String stuGrade = request.getParameter("stuGrade"); 
+		String stuGrade = request.getParameter("stuGrade");
 		String stuClass = request.getParameter("stuClass");
 		String stuGender = request.getParameter("stuGender");
-		
+
+		// ✅ stuClass와 stuGender에 작은따옴표 추가!
 		String sql = "INSERT INTO STUDENT(STU_NO, STU_NAME, STU_DEPT, STU_GRADE, STU_CLASS, STU_GENDER) "
-		        + "VALUES ( "
+		        + "VALUES ("
 				+ "'" + stuNo + "', "
 		        + "'" + stuName + "', "
-		        + stuDept + ", "
+		        + "'" + stuDept + "', "
 		        + stuGrade + ", "
-		        + stuClass + ", "
-		        + stuGender + " )";
+		        + "'" + stuClass + "', "
+		        + "'" + stuGender + "')";
+
 		int result = stmt.executeUpdate(sql);
-		if(result > 0){
-			response.sendRedirect("stu-list.jsp"); // 해당 페이지로 이동
-			out.println("등록되었습니다.");
-		} else {
-			out.println("오류가 발생했습니다.");
-		}
 	%>
 </body>
 </html>
+<script>
+	let result = <%= result %>;
+	if(result > 0){
+		alert("등록되었습니다!");
+		location.href = "stu-list.jsp";
+	} else {
+		alert("등록 실패!");
+		history.back();
+	}
+</script>

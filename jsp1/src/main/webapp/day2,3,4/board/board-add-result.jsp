@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%@ include file="../../db.jsp" %>
+	<!-- board-add-result.jsp -->
+	<%
+		String title = request.getParameter("title");
+		String contents = request.getParameter("contents");
+		String kind = request.getParameter("kind");
+		String sessionId = (String)session.getAttribute("sessionId");
+	
+		/* 시퀀스 -> BOARD_SEQ.NEXTVAL */
+		/* 아이디는 하드코딩(user01~05) */
+		/* 조회수는 0 */
+		/* 날짜는 SYSDATE */
+		
+		String sql = "INSERT INTO TBL_BOARD "
+					+ "VALUES ( "
+					+ "BOARD_SEQ.NEXTVAL, " 
+					+ "'" + sessionId + "', "
+					+ "'" + title + "', "
+					+ "'" + contents + "',"
+					+ "0, "
+					+ kind + ", "
+					+ "SYSDATE, SYSDATE )";
+		int result = stmt.executeUpdate(sql);
+		if(result > 0){
+			/* 게시글 목록으로 이동 */
+			response.sendRedirect("board-list.jsp"); // 해당 페이지로 이동
+			out.println("등록되었습니다.");
+		} else {
+			out.println("오류발생");
+		}
+	%>
+	
+</body>
+</html>
